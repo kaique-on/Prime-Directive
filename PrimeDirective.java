@@ -2,28 +2,33 @@ import java.util.ArrayList;
 public class PrimeDirective {
     public boolean isPrime(int number) {
         if (number == 2) {
-            System.out.println("Menor numero primo");
             return true;
         } else if (number < 2) {
-            System.out.println("Não é primo");
             return false;
         }
         for (int i = 2; i < number ; i++) {
             if (number%i == 0) {
-                System.out.println("Nao e primo");
                 return false;
             }
           }
-          System.out.println("E primo");
           return true;
     }
 
-    public void onlyPrime(ArrayList<Integer> number) {
+    public ArrayList<Integer> onlyPrimes(int[] numbers) {
         ArrayList<Integer> primes = new ArrayList<Integer>(); 
+        for(int number:numbers) {
+            if (isPrime(number)){
+                primes.add(number);
+            }
+        }
+        return primes;
     }
     
     public static void main(String[] args) {
+        int[] numerosprimos = {8, 3, 19, 15};
         PrimeDirective prime = new PrimeDirective();
+        ArrayList<Integer> numeroFinais = prime.onlyPrimes(numerosprimos);
+        System.out.println(numeroFinais);
         
         prime.isPrime(47);
     }
